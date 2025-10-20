@@ -6,16 +6,16 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SobreController;
 use App\Http\Controllers\MotoristaController;
 use App\Http\Controllers\PassageiroController;
-// Rota Home - ADICIONE ->name('home')
+
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
-// Rota Login - ADICIONE ->name('login')
-Route::get('/login', [LoginController::class, 'login'])->name('login');
-
-// Rota Sobre - ADICIONE ->name('sobre')
 Route::get('/sobre', [SobreController::class, 'sobre'])->name('sobre');
 
-// Grupo de rotas para motorista
+Route::controller(LoginController::class)->group(function() {
+    Route::get('/login', 'login')->name('login');
+    Route::post('/logar', 'logar')->name('logar');
+    Route::get('/logout', 'logout')->name('logout');
+});
 Route::prefix('/motorista')->group(function() {
     Route::get('/cadastrar', [MotoristaController::class, 'cadastrar_m'])->name('motorista.cadastrar');
 });

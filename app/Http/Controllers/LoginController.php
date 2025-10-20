@@ -7,14 +7,27 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function login()
-    {
-        $dados = [
-            'email' => "teste@gmail.com",
-            'senha' => "1234567"
-        ];
-        return view('login',['hideHeader'=>true]);
+    {   
+        // Garantir que hideHeader seja true SEMPRE na página de login
+        return view('login', ['hideHeader' => true]);
     }
-    public function logout() {
-    return view('login');
+    
+    public function logar(Request $request)
+    {   
+        if ($request->email == 'teste@gmail.com' && $request->senha == '1234567') {
+            //Credencial valida
+            return redirect()->route('home');
+        } else {
+            //Credencial invalida
+            return view('login', [
+                'hideHeader' => true,
+                'error' => 'Credenciais inválidas!'
+            ]);
+        }
+    }
+
+    public function logout() 
+    {
+        return view('login', ['hideHeader' => true]);
     }
 }

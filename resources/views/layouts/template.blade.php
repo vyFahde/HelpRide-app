@@ -10,19 +10,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     
-    @stack('styles') <!-- Para CSS adicional em páginas específicas -->
+    <style>
+        .alert-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+        
+        .alert {
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
 </head>
 <body>
-    @empty($hideHeader)
-            @include('layouts.header')
-        @endempty
+
+    @unless(isset($hideHeader) && $hideHeader === true)
+        @include('layouts.header')
+    @endunless
     
-    <!-- Conteúdo Principal -->
     <main>
+        <!-- MENSAGEM DE ERRO -->
+        @if(isset($error) && $error)
+        <div class="alert-container">
+            <div class="alert alert-danger">
+                {{ $error }}
+            </div>
+        </div>
+        @endif
+        
         @yield('content')
     </main>
     
-    <!-- Footer -->
     @include('layouts.footer')
 </body>
 </html>
