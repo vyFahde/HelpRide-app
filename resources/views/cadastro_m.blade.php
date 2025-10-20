@@ -3,92 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HelpRide</title>
+  <title>HelpRide - Cadastro Motorista</title>
   
-  <!-- CSS corrigido com asset() -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="cadastro-container">
-      <h2>Cadastro de Motorista</h2>
+    <h2>Cadastro de Motorista</h2>
 
+    <!-- Mensagens de Sucesso/Erro -->
+    @if(session('success'))
+      <div class="alert alert-success">
+        {{ session('success') }}
+      </div>
+    @endif
 
-<div class="section">
-  <h2>Dados Pessoais</h2>
-    <form>
-    <div class="form-group">
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" minlength="3" maxlength="100" required>
+    @if(session('error'))
+      <div class="alert alert-danger">
+        {{ session('error') }}
+      </div>
+    @endif
 
-      <label for="cpf">CPF</label>
-      <input type="text" id="cpf" name="cpf" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" placeholder="000.000.000-00" required>
+    @if($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
 
-      <label for="nascimento">Data de Nascimento</label>
-      <input type="date" id="nascimento" name="nascimento" required>
+    <!-- FORM COMEÇA AQUI -->
+    <form action="{{ route('motorista.store') }}" method="post" enctype="multipart/form-data">
+      @csrf
+      
+      <div class="section">
+        <h2>Dados Pessoais</h2>
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" minlength="3" maxlength="100" value="{{ old('nome') }}" required>
 
-      <label for="celular">Celular</label>
-      <input type="tel" id="celular" name="celular" pattern="\(\d{2}\)\s\d{5}-\d{4}" placeholder="(99) 99999-9999" required>
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00 ou 000000000000" value="{{ old('cpf') }}" required>
 
-      <label for="email">E-mail</label>
-      <input type="email" id="email" name="email" required>
+          <label for="nascimento">Data de Nascimento</label>
+          <input type="date" id="nascimento" name="nascimento" value="{{ old('nascimento') }}" required>
 
-      <label for="usuario">Usuário</label>
-      <input type="text" id="usuario" name="usuario" minlength="3" maxlength="20" required>
+          <label for="celular">Celular</label>
+          <label for="celular">Celular</label>
+<input type="tel" id="celular" name="celular" placeholder="Ex: 11999999999 ou (11) 99999-9999" value="{{ old('celular') }}" required>
 
-      <label for="senha">Senha</label>
-      <input type="password" id="senha" name="senha" minlength="7" required>
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" value="{{ old('email') }}" required>
 
-      <label for="foto">Foto (opcional)</label>
-      <input type="file" id="foto" name="foto" accept="image/*">
-    </div> <!--Form Group-->
-  </div> <!--Section-->
+          <label for="usuario">Usuário</label>
+          <input type="text" id="usuario" name="usuario" minlength="3" maxlength="20" value="{{ old('usuario') }}" required>
 
-  <div class="section">
-    <h2>Dados da CNH</h2>
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" minlength="7" required>
 
-    <div class="form-group">
-      <label for="cnh">Nº CNH</label>
-      <input type="text" id="cnh" name="cnh" pattern="\d{11}" maxlength="11" placeholder="Somente números" required>
+          <label for="foto">Foto (opcional)</label>
+          <input type="file" id="foto" name="foto" accept="image/*">
+        </div>
+      </div>
 
+      <div class="section">
+        <h2>Dados da CNH</h2>
+        <div class="form-group">
+          <label for="cnh">Nº CNH</label>
+          <input type="text" id="cnh" name="cnh" pattern="\d{11}" maxlength="11" placeholder="Somente números" value="{{ old('cnh') }}" required>
 
-      <label for="validade">Data de Validade</label>
-      <input type="date" id="validade" name="validade" required>
-    </div> <!--Form Group-->
-  </div> <!--Section-->
+          <label for="validade">Data de Validade</label>
+          <input type="date" id="validade" name="validade" value="{{ old('validade') }}" required>
+        </div>
+      </div>
 
-  <div class="section">
-    <h2>Dados do Veículo</h2>
+      <div class="section">
+        <h2>Dados do Veículo</h2>
+        <div class="form-group">
+          <label for="modelo">Modelo</label>
+          <input type="text" id="modelo" name="modelo" value="{{ old('modelo') }}" required>
 
-    <div class="form-group">
-      <label for="modelo">Modelo</label>
-      <input type="text" id="modelo" name="modelo" required>
+          <label for="placa">Placa</label>
+          <input type="text" id="placa" name="placa" 
+                pattern="([A-Z]{3}[0-9][A-Z0-9][0-9]{2})|([A-Z]{3}[0-9]{4})" 
+                placeholder="XXX0X00 ou XXX0000" value="{{ old('placa') }}" required>
 
-      <label for="placa">Placa</label>
-      <input type="text" id="placa" name="placa" 
-              pattern="([A-Z]{3}[0-9][A-Z0-9][0-9]{2})|([A-Z]{3}[0-9]{4})" 
-              placeholder="XXX0X00 ou XXX0000" required>
+          <label for="ano">Ano</label>
+          <input type="number" id="ano" name="ano" min="1980" max="{{ date('Y') }}" value="{{ old('ano') }}" placeholder="Ex: 2020" required>
 
-      <label for="ano">Ano</label>
-      <input type="date" id="ano" name="ano" required>
-
-      <label for="cor">Cor</label>
-      <input type="text" id="cor" name="cor" required>
-    </div> <!--Form Group-->
-  </div> <!--Section-->
-    <div class="btn-global">
+          <label for="cor">Cor</label>
+          <input type="text" id="cor" name="cor" value="{{ old('cor') }}" required>
+        </div>
+      </div>
+      
+      <div class="btn-global">
         <button type="submit">Cadastrar</button>
             
         <div class="btn-voltar">
-            <a href="index.html"></a>
-            <button type="button" onclick="window.history.back()">Voltar</button>
-            </a>
-        </div> <!--btn voltar-->
-    </div> <!--form-group-->
-</form>
+          <a href="{{ route('home') }}">
+            <button type="button">Voltar para Home</button>
+          </a>
+        </div>
+      </div>
+    </form>
+    <!-- FORM TERMINA AQUI -->
     
+  </div>
 </body>
 </html>

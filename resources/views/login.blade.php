@@ -21,7 +21,7 @@
                 <input type="email" id="email" name="email" minlength="3" maxlength="20" required>
 
                 <label for="senha">Senha</label>
-                <input type="senha" id="senha" name="senha" minlength="7" required>
+                <input type="password" id="senha" name="senha" minlength="7" required>
             </div>
         </div>
         
