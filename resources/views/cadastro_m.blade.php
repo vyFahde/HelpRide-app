@@ -54,8 +54,7 @@
           <input type="date" id="nascimento" name="nascimento" value="{{ old('nascimento') }}" required>
 
           <label for="celular">Celular</label>
-          <label for="celular">Celular</label>
-<input type="tel" id="celular" name="celular" placeholder="Ex: 11999999999 ou (11) 99999-9999" value="{{ old('celular') }}" required>
+          <input type="tel" id="celular" name="celular" placeholder="Ex: 11999999999 ou (11) 99999-9999" value="{{ old('celular') }}" required>
 
           <label for="email">E-mail</label>
           <input type="email" id="email" name="email" value="{{ old('email') }}" required>

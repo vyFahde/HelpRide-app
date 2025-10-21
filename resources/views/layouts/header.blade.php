@@ -27,7 +27,7 @@
             
             <div class="btn-motorista">
                 <a href="{{ route('motorista.cadastrar') }}">
-                    <button>Oferecer carona</button>
+                    <button>Seja um motorista</button>
                 </a>
             </div>
         </div>

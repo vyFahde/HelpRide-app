@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Motorista extends Authenticatable
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'cpf', 
+        'nascimento',
+        'celular',
+        'email',
+        'usuario',
+        'senha',
+        'foto',
+        'cnh',
+        'validade_cnh',
+        'modelo_veiculo',
+        'placa_veiculo', 
+        'ano_veiculo',
+        'cor_veiculo',
+        'status',
+    ];
+
+    protected $hidden = [
+        'senha',
+    ];
+
+    protected $casts = [
+        'nascimento' => 'date',
+        'validade_cnh' => 'date',
+    ];
+}
