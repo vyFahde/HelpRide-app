@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Motorista;
 
 class MotoristaController extends Controller
 {
@@ -18,6 +20,7 @@ class MotoristaController extends Controller
             'nome' => 'required|string|min:3|max:100',
             'cpf' => 'required|string|min:11|max:14',
             'nascimento' => 'required|date|before:-18 years',
+            'genero' => 'required|in:masculino,feminino,outro',
             'celular' => 'required|string|min:10|max:15',
             'email' => 'required|email',
             'usuario' => 'required|string|min:3|max:20',
@@ -70,7 +73,24 @@ class MotoristaController extends Controller
                 $fotoPath = $request->file('foto')->store('motoristas/fotos', 'public');
             }
 
-            
+      $motorista = Motorista::create([
+                'nome' => $request->nome,
+                'cpf' => $cpfLimpo, // CPF já limpo
+                'nascimento' => $request->nascimento,
+                'celular' => $celularLimpo, // Celular já limpo
+                'genero' => $request->genero,
+                'email' => $request->email,
+                'usuario' => $request->usuario,
+                'senha' => Hash::make($request->senha), // Senha criptografada
+                'foto' => $fotoPath,
+                'cnh' => $request->cnh,
+                'validade_cnh' => $request->validade,
+                'modelo_veiculo' => $request->modelo,
+                'placa_veiculo' => strtoupper($request->placa), // Placa em maiúsculo
+                'ano_veiculo' => $request->ano,
+                'cor_veiculo' => $request->cor,
+                'status' => 'pendente', // Status inicial
+            ]);        
 
             return redirect()->route('home')
                 ->with('success', 'Cadastro realizado com sucesso! Aguarde a aprovação.');

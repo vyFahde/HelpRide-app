@@ -56,6 +56,14 @@
           <label for="celular">Celular</label>
           <input type="tel" id="celular" name="celular" placeholder="Ex: 11999999999 ou (11) 99999-9999" value="{{ old('celular') }}" required>
 
+          <label for="genero">Gênero</label>
+        <select id="genero" name="genero" required>
+          <option value="">Selecione seu gênero</option>
+          <option value="masculino" {{ old('genero') == 'masculino' ? 'selected' : '' }}>Masculino</option>
+          <option value="feminino" {{ old('genero') == 'feminino' ? 'selected' : '' }}>Feminino</option>
+          <option value="outro" {{ old('genero') == 'outro' ? 'selected' : '' }}>Outro</option>
+        </select>
+
           <label for="email">E-mail</label>
           <input type="email" id="email" name="email" value="{{ old('email') }}" required>
 

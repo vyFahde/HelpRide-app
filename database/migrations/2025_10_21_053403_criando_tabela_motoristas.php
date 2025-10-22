@@ -15,6 +15,8 @@ return new class extends Migration
             $table->string('nome', 100);
             $table->string('cpf', 14)->unique();
             $table->date('nascimento');
+            $table->enum('genero', ['masculino', 'feminino','prefiro_nao_informar'])
+                  ->default('prefiro_nao_informar');
             $table->string('celular', 15);
             $table->string('email')->unique();
             $table->string('usuario', 20)->unique();

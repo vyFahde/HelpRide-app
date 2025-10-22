@@ -13,6 +13,7 @@ class Motorista extends Authenticatable
         'nome',
         'cpf', 
         'nascimento',
+        'genero',
         'celular',
         'email',
         'usuario',

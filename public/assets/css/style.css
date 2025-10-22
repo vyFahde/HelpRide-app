@@ -276,6 +276,44 @@ footer {
   transition: background 0.3s;
 }
 
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group select:focus {
+  border-color: rgb(70, 182, 182);
+  box-shadow: 0 0 0 3px rgba(70, 182, 182, 0.1);
+  outline: none;
+}
+
+.form-group select:hover {
+  border-color: rgb(70, 182, 182);
+}
+
+
+.form-group select option {
+  padding: 10px;
+  font-size: 14px;
+  background-color: white;
+  color: #333;
+}
+
+.form-group select option:checked {
+  background-color: rgba(70, 182, 182, 0.1);
+  color: #333;
+}
+
+.form-group select option:hover {
+  background-color: rgba(70, 182, 182, 0.2);
+}
+
 .cadastro-container button:hover {
   background: #1d9e9e;
 }
