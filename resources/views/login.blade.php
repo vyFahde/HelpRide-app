@@ -17,8 +17,8 @@
         <div class="section">
             <h2>Insira seu usuário e senha</h2>
             <div class="form-group">
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" minlength="3" maxlength="20" required>
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" name="usuario" minlength="3" maxlength="20" required>
 
                 <label for="senha">Senha</label>
                 <input type="password" id="senha" name="senha" minlength="7" required>

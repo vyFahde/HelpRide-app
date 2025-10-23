@@ -14,7 +14,7 @@ class LoginController extends Controller
     
     public function logar(Request $request)
     {   
-        if ($request->email == 'teste@gmail.com' && $request->senha == '1234567') {
+        if ($request->usuario == 'teste' && $request->senha == '1234567') {
             //Credencial valida
             return redirect()->route('home');
         } else {
