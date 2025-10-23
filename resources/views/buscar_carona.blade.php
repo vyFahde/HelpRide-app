@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'HelpRide - Buscar Caronas')
+@section('title', 'Buscar motoristas')
 
 @section('content')
 <section class="busca-carona" style="background-image: url('{{ asset('assets/images/sobre_bg.jpg') }}');">

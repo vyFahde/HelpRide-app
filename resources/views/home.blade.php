@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'Bem-vindo')
+@section('title', 'HelpRide')
 
 @section('content')
 <section class="topo-do-site">

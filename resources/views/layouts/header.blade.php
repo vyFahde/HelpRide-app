@@ -11,7 +11,7 @@
                 <li><a href="{{route('home')}}">Início</a></li>
                 <li><a href="{{route('sobre')}}">Sobre</a></li>
                 <li><a href="{{route('passageiro.buscar')}}">Caronas</a></li>
-                <li><a href="{{route('passageiro.painel')}}">Suporte</a></li>
+                <li><a href="{{route('suporte')}}">Suporte</a></li>
             </ul>
         </nav>
         
