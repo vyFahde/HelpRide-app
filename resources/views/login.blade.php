@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'HelpRide - Login')
+@section('title', 'Login')
 
 @section('content')
 <div class="login-container">
@@ -30,7 +30,7 @@
         </div>
         
         <div class="btn-voltar">
-            <a href="{{ route('home') }}">
+            <a href="{{route('home')}}">
             <button type="button">Voltar</button>
         </div>
     </form>

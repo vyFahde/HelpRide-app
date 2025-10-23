@@ -1,9 +1,9 @@
 @extends('layouts.template')
 
-@section('title', 'HelpRide - Página Inicial')
+@section('title', 'Sobre')
 
 @section('content')
-<section class="background">
+<section class="background" style="background-image: url('{{ asset('assets/images/sobre_bg.jpg') }}');">
     <div class="overlay-content">
         <h1>Bem-vindo ao Nosso Sistema de Caronas</h1>
         <p>Conectando passageiros e motoristas de forma acessível e segura.</p>

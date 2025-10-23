@@ -326,11 +326,9 @@ footer {
 
 /* sobre */
 .background {
-  background-image: url("assets/images/sobre_bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   position: relative;
   color: #fff;
   min-height: 70vh;
@@ -455,7 +453,10 @@ section.sobre {
 /* Tela de busca de carona */
 .busca-carona {
   position: relative;
-  background: url("assets/images/sobre_bg.jpg") no-repeat center center/cover;
+  /* REMOVER: background: url("assets/images/sobre_bg.jpg") no-repeat center center/cover; */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 80vh;
   display: flex;
   align-items: center;
@@ -467,7 +468,7 @@ section.sobre {
 .busca-carona .overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 0, 0, 0.55); /* escurece o fundo */
+  background: rgba(0, 0, 0, 0.55);
   z-index: 0;
 }
 
@@ -526,8 +527,7 @@ section.sobre {
   box-shadow: 0 0 6px rgba(70, 182, 182, 0.4);
   outline: none;
 }
-
-/* popup */
+/* popup 
 
 .popup {
   display: none;
@@ -564,7 +564,7 @@ section.sobre {
   background: rgba(0,0,0,0.5);
   z-index: 900;
 }
-
+*/
 /* Mensagens de Alerta */
 .alert {
     padding: 15px 25px;
@@ -592,4 +592,536 @@ section.sobre {
     text-align: left;
     margin: 10px 0 0 0;
     padding-left: 20px;
+}
+
+/* Painel de Carona */
+.search-page {
+    padding: 40px 4% 40px 2%;
+    max-width: 100%;
+}
+
+.search-header {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search-inputs {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.input-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.input-group input:focus {
+    border-color: rgb(70, 182, 182);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(70, 182, 182, 0.1);
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    display: flex;
+    gap: 50px;
+}
+
+/* Filters Sidebar */
+.filters-sidebar {
+    flex: 0 0 320px;
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    left: 0;
+}
+
+.filters-sidebar h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgb(70, 182, 182);
+}
+
+.filter-section {
+    margin-bottom: 25px;
+}
+
+.filter-section h4 {
+    font-size: 15px;
+    margin-bottom: 12px;
+    color: #555;
+    font-weight: 600;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.filter-option input[type="radio"],
+.filter-option input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    cursor: pointer;
+    accent-color: rgb(70, 182, 182);
+}
+
+.filter-option label {
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Results Container */
+.results-container {
+    flex: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.results-header h2 {
+    font-size: 22px;
+    color: #333;
+}
+
+.results-count {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Ride Cards */
+.ride-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ride-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.ride-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e5e7eb;
+    width: 100%;
+}
+
+.ride-time {
+    flex: 0 0 auto;
+}
+
+.ride-time h4 {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.ride-time .time {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.ride-price {
+    text-align: right;
+    flex: 0 0 auto;
+    margin-left: auto;
+}
+
+.ride-price .price {
+    font-size: 28px;
+    font-weight: 700;
+    color: rgb(70, 182, 182);
+}
+
+/* Route Info */
+.ride-route {
+    margin-bottom: 20px;
+}
+
+.route-point {
+    margin-bottom: 15px;
+}
+
+.route-point:last-child {
+    margin-bottom: 0;
+}
+
+.point-label {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.point-location {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.route-divider {
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(to bottom, rgb(70, 182, 182), #e5e7eb);
+    margin: 10px 0 10px 5px;
+}
+
+/* Ride Footer */
+.ride-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.driver-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.driver-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgb(70, 182, 182);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.driver-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.driver-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.driver-rating {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .filters-sidebar {
+        flex: 1;
+        position: static;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .search-inputs {
+        flex-direction: column;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+
+    .ride-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .ride-price {
+        text-align: left;
+    }
+
+    .ride-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .ride-footer .btn-global {
+        width: 100%;
+    }
+
+    .ride-footer .btn-global button {
+        width: 100%;
+    }
+}
+
+/*Suporte */
+.suporte-page {
+  padding: 40px 4%;
+  min-height: calc(100vh - 200px);
+}
+
+.suporte-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.suporte-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.suporte-header h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.suporte-header h1 .carona {
+  color: rgb(70, 182, 182);
+}
+
+.suporte-header p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Form Section */
+.form-section {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.form-section h2 {
+  font-size: 22px;
+  color: rgb(70, 182, 182);
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.form-section .form-group {
+  margin-bottom: 20px;
+}
+
+.form-section .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-section .form-group input,
+.form-section .form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+  font-family: "Roboto", sans-serif;
+}
+
+.form-section .form-group input:focus,
+.form-section .form-group select:focus {
+  border-color: rgb(70, 182, 182);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(70, 182, 182, 0.1);
+}
+
+.form-section .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  resize: vertical;
+  min-height: 120px;
+  transition: border-color 0.3s;
+}
+
+.form-section .form-group textarea:focus {
+  border-color: rgb(70, 182, 182);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(70, 182, 182, 0.1);
+}
+
+.form-section .btn-global {
+  margin-top: 20px;
+}
+
+.form-section .btn-global button {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Contato Rápido */
+.contato-rapido {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contato-rapido h3 {
+  font-size: 20px;
+  color: rgb(70, 182, 182);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.contato-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background: #f8f8f8;
+  transition: all 0.3s;
+}
+
+.contato-item:hover {
+  background: rgba(70, 182, 182, 0.05);
+  transform: translateX(5px);
+}
+
+.contato-item:last-child {
+  margin-bottom: 0;
+}
+
+.contato-icon {
+  font-size: 32px;
+  margin-right: 20px;
+  min-width: 40px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contato-info {
+  flex: 1;
+}
+
+.contato-info h4 {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.contato-info p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+  .suporte-page {
+    padding: 20px 4%;
+  }
+
+  .suporte-header h1 {
+    font-size: 28px;
+  }
+
+  .suporte-header p {
+    font-size: 14px;
+  }
+
+  .form-section,
+  .contato-rapido {
+    padding: 20px;
+  }
+
+  .form-section h2,
+  .contato-rapido h3 {
+    font-size: 18px;
+  }
+
+  .contato-item {
+    padding: 12px;
+  }
+
+  .contato-icon {
+    font-size: 28px;
+    margin-right: 15px;
+    min-width: 35px;
+  }
+
+  .contato-info h4 {
+    font-size: 15px;
+  }
+
+  .contato-info p {
+    font-size: 13px;
+  }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -59,7 +58,6 @@ class MotoristaController extends Controller
             $errors['celular'] = 'Número de celular deve ter 10 ou 11 dígitos (com DDD).';
         }
         
-        // Se houver erros na validação manual, retorna com erros
         if (!empty($errors)) {
             return back()
                 ->withErrors($errors)
@@ -67,7 +65,6 @@ class MotoristaController extends Controller
         }
 
         try {
-            // Processar upload da foto
             $fotoPath = null;
             if ($request->hasFile('foto')) {
                 $fotoPath = $request->file('foto')->store('motoristas/fotos', 'public');
@@ -75,21 +72,21 @@ class MotoristaController extends Controller
 
       $motorista = Motorista::create([
                 'nome' => $request->nome,
-                'cpf' => $cpfLimpo, // CPF já limpo
+                'cpf' => $cpfLimpo, 
                 'nascimento' => $request->nascimento,
-                'celular' => $celularLimpo, // Celular já limpo
+                'celular' => $celularLimpo,
                 'genero' => $request->genero,
                 'email' => $request->email,
                 'usuario' => $request->usuario,
-                'senha' => Hash::make($request->senha), // Senha criptografada
+                'senha' => Hash::make($request->senha),
                 'foto' => $fotoPath,
                 'cnh' => $request->cnh,
                 'validade_cnh' => $request->validade,
                 'modelo_veiculo' => $request->modelo,
-                'placa_veiculo' => strtoupper($request->placa), // Placa em maiúsculo
+                'placa_veiculo' => strtoupper($request->placa),
                 'ano_veiculo' => $request->ano,
                 'cor_veiculo' => $request->cor,
-                'status' => 'pendente', // Status inicial
+                'status' => 'pendente',
             ]);        
 
             return redirect()->route('home')

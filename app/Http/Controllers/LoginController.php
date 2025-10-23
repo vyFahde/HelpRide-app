@@ -8,7 +8,7 @@ class LoginController extends Controller
 {
     public function login()
     {   
-        // Garantir que hideHeader seja true SEMPRE na página de login
+
         return view('login', ['hideHeader' => true]);
     }
     
