@@ -20,7 +20,7 @@
                 <a href="{{route('login') }}">
                     <button>Login</button>
                 </a>
-                <a href="#">
+                <a href="{{route('passageiro.cadastrar') }}">
                     <button>Seja um passageiro</button>
                 </a>
             </div>

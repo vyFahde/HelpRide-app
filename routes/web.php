@@ -8,7 +8,6 @@ use App\Http\Controllers\MotoristaController;
 use App\Http\Controllers\PassageiroController;
 use App\Http\Controllers\SuporteController;
 
-
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::get('/sobre', [SobreController::class, 'sobre'])->name('sobre');
@@ -34,6 +33,10 @@ Route::prefix('/motorista')->group(function() {
 });
 
 Route::prefix('/passageiro')->group(function() {
+
+    Route::get('/cadastrar', [PassageiroController::class, 'cadastrar_p'])->name('passageiro.cadastrar');
+    
+    Route::post('/cadastrar', [PassageiroController::class, 'store'])->name('passageiro.store');
     
     Route::get('/buscar_carona', [PassageiroController::class, 'buscar_c'])->name('passageiro.buscar');
 
