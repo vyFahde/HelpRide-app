@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 class MotoristaController extends Controller
 {
     public function cadastrar_m() {
-        return view('cadastro_m');
+        return view('cadastro_m',['hideHeader' => true]);
     }
 
     public function store(Request $request)
