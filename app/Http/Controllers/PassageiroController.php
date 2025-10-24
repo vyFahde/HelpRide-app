@@ -28,7 +28,7 @@ class PassageiroController extends Controller
             // Validação dos dados
             $validator = Validator::make($request->all(), [
                 'nome' => 'required|string|min:3|max:100',
-                'cpf' => 'required|string|size:14|unique:passageiros,cpf',
+                'cpf' => 'required|string|min: 11|max:14|unique:passageiros,cpf',
                 'nascimento' => 'required|date',
                 'genero' => 'required|in:masculino,feminino,outro',
                 'celular' => 'required|string|min:11|max:15',

@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'HelpRide - Cadastro Passageiro')
+@section('title', 'Cadastro de Passageiro')
 
 @section('content')
 <div class="cadastro-container">
@@ -42,7 +42,7 @@
                 <label for="cpf">CPF *</label>
                 <input type="text" id="cpf" name="cpf" 
                        value="{{ old('cpf') }}" required 
-                       placeholder="000.000.000-00" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                       placeholder="000.000.000-00 ou 000000000000" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
 
                 <label for="nascimento">Data de Nascimento *</label>
                 <input type="date" id="nascimento" name="nascimento" 
@@ -59,7 +59,7 @@
                 <label for="celular">Celular *</label>
                 <input type="tel" id="celular" name="celular" 
                        value="{{ old('celular') }}" required 
-                       placeholder="(11) 99999-9999" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}">
+                       placeholder="Ex: 11999999999 ou (11) 99999-9999" pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}">
 
                 <label for="email">E-mail *</label>
                 <input type="email" id="email" name="email" 
