@@ -1,10 +1,11 @@
-<?php
+'''<?php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Motorista;
+use App\Models\Passageiro;
 
 class MotoristaController extends Controller
 {
@@ -17,17 +18,17 @@ class MotoristaController extends Controller
             
             // Dados Pessoais
             'nome' => 'required|string|min:3|max:100',
-            'cpf' => 'required|string|min:11|max:14',
+            'cpf' => 'required|string|min:11|max:14|unique:motoristas,cpf|unique:passageiros,cpf',
             'nascimento' => 'required|date|before:-18 years',
             'genero' => 'required|in:masculino,feminino,outro',
-            'celular' => 'required|string|min:10|max:15',
-            'email' => 'required|email',
-            'usuario' => 'required|string|min:3|max:20',
+            'celular' => 'required|string|min:10|max:15|unique:motoristas,celular|unique:passageiros,celular',
+            'email' => 'required|email|unique:motoristas,email|unique:passageiros,email',
+            'usuario' => 'required|string|min:3|max:20|unique:motoristas,usuario',
             'senha' => 'required|string|min:7',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             
             // Dados da CNH
-            'cnh' => 'required|string|min:11|max:11',
+            'cnh' => 'required|string|min:11|max:11|unique:motoristas,cnh',
             'validade' => 'required|date|after:today',
             
             // Dados do Veículo
@@ -41,6 +42,11 @@ class MotoristaController extends Controller
             'ano.integer' => 'O ano do veículo deve ser um número.',
             'ano.min' => 'O ano do veículo deve ser a partir de 2000.',
             'ano.max' => 'O ano do veículo não pode ser no futuro.',
+            'cpf.unique' => 'Este CPF já está cadastrado.',
+            'celular.unique' => 'Este celular já está cadastrado.',
+            'email.unique' => 'Este e-mail já está cadastrado.',
+            'usuario.unique' => 'Este nome de usuário já está em uso.',
+            'cnh.unique' => 'Esta CNH já está cadastrada.',
         ]);
 
         // Validação manual do CPF e Celular
@@ -99,3 +105,4 @@ class MotoristaController extends Controller
         }
     }
 }
+'''

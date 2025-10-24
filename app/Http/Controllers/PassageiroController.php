@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Passageiro;
+use App\Models\Motorista;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -28,11 +29,11 @@ class PassageiroController extends Controller
             // Validação dos dados
             $validator = Validator::make($request->all(), [
                 'nome' => 'required|string|min:3|max:100',
-                'cpf' => 'required|string|min: 11|max:14|unique:passageiros,cpf',
-                'nascimento' => 'required|date',
+                'cpf' => 'required|string|min: 11|max:14|unique:passageiros,cpf|unique:motoristas,cpf',
+                'nascimento' => 'required|date|before:-18 years',
                 'genero' => 'required|in:masculino,feminino,outro',
-                'celular' => 'required|string|min:11|max:15',
-                'email' => 'required|email|unique:passageiros,email',
+                'celular' => 'required|string|min:11|max:15|unique:passageiros,celular|unique:motoristas,celular',
+                'email' => 'required|email|unique:passageiros,email|unique:motoristas,email',
                 'senha' => [
                     'required',
                     'string',
@@ -41,8 +42,10 @@ class PassageiroController extends Controller
                 ],
                 'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ], [
+                'nascimento.before' => 'Você deve ter pelo menos 18 anos para se cadastrar.',
                 'senha.regex' => 'A senha deve conter letras maiúsculas, minúsculas, números e pelo menos um caractere especial.',
                 'cpf.unique' => 'Este CPF já está cadastrado.',
+                'celular.unique' => 'Este celular já está cadastrado.',
                 'email.unique' => 'Este e-mail já está cadastrado.'
             ]);
 
@@ -61,10 +64,10 @@ class PassageiroController extends Controller
             // Criar passageiro
             $passageiro = Passageiro::create([
                 'nome' => $request->nome,
-                'cpf' => $request->cpf,
+                'cpf' => preg_replace('/[^0-9]/', '', $request->cpf),
                 'nascimento' => $request->nascimento,
                 'genero' => $request->genero,
-                'celular' => $request->celular,
+                'celular' => preg_replace('/[^0-9]/', '', $request->celular),
                 'email' => $request->email,
                 'senha' => Hash::make($request->senha),
                 'foto' => $fotoPath,

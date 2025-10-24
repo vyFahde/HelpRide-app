@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'motorista' => [
+            'driver' => 'session',
+            'provider' => 'motoristas',
+        ],
+        'passageiro' => [
+            'driver' => 'session',
+            'provider' => 'passageiros',
+        ],
     ],
 
     /*
@@ -63,6 +71,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+
+        'motoristas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Motorista::class,
+        ],
+
+        'passageiros' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Passageiro::class,
         ],
 
         // 'users' => [
