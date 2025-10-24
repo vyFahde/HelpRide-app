@@ -1282,7 +1282,6 @@ section.sobre {
     width: 100%;
 }
 
-/* Botão principal */
 .btn-publicar {
     background-color: rgb(70, 182, 182);
     color: white;
@@ -1292,7 +1291,6 @@ section.sobre {
     background-color: #1d9e9e;
 }
 
-/* Botão secundário */
 .btn-voltar button {
     background-color: #ccc;
     color: #333;
