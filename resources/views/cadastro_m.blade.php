@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title', 'HelpRide - Cadastro Motorista')
+@section('title', 'Cadastro Motorista')
 
 @section('content')
 <div class="cadastro-container">
