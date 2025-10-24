@@ -53,7 +53,10 @@ Route::middleware(['auth:motorista,passageiro'])->group(function () {
     // Adicionar rotas protegidas para motorista aqui, se houver
 
     Route::get('/perfil/configuracoes', [PerfilConfiguracoesController::class, 'index'])->name('perfil.configuracoes');
-    
+});
+
+// Rotas protegidas APENAS para Motorista
+Route::middleware(['auth:motorista'])->group(function () {
     // Rotas de Carona
     Route::controller(CaronaController::class)->group(function() {
         Route::get('/carona/publicar', 'publicarCarona')->name('carona.publicar');
