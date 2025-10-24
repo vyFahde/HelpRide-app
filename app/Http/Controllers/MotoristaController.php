@@ -118,4 +118,3 @@ class MotoristaController extends Controller
         }
     }
 }
-

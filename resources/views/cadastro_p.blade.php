@@ -71,9 +71,10 @@
                        value="{{ old('usuario') }}" required placeholder="Escolha um nome de usuário">
 
                 <label for="senha">Senha *</label>
-                <input type="password" id="senha" name="senha" minlength="7" required>
-                <small class="form-text">
-                </small>
+                <input type="password" id="senha" name="senha" 
+                       minlength="8" required 
+                       placeholder="Mínimo 8 caracteres com letras, números e símbolos">
+
 
                 <label for="foto">Foto (opcional)</label>
                 <input type="file" id="foto" name="foto" accept="image/*">

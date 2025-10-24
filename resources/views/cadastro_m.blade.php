@@ -65,11 +65,7 @@
                 <label for="senha">Senha *</label>
                 <input type="password" id="senha" name="senha" 
                        minlength="8" required 
-                       placeholder="Mínimo 8 caracteres com letras, números e símbolos"
-                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]">
-                <small class="form-text">
-                    A senha deve conter: letra maiúscula, minúscula, número e caractere especial (@$!%*?&)
-                </small>
+                       placeholder="Mínimo 8 caracteres com letras, números e símbolos">
 
                 <label for="foto">Foto</label>
                 <input type="file" id="foto" name="foto" accept="image/*">
@@ -133,22 +129,22 @@
 	    });
 
 	    // Validação de senha em tempo real
-	    const senhaInput = document.getElementById('senha');
-	    senhaInput.addEventListener('input', function(e) {
-	        const senha = e.target.value;
-	        const hasUpperCase = /[A-Z]/.test(senha);
-	        const hasLowerCase = /[a-z]/.test(senha);
-	        const hasNumbers = /\d/.test(senha);
-	        const hasSpecialChar = /[@$!%*?&]/.test(senha);
-	        
-	        if (senha.length > 0) {
-	            if (!hasUpperCase || !hasLowerCase || !hasNumbers || !hasSpecialChar) {
-	                senhaInput.style.borderColor = '#e74c3c';
-	            } else {
-	                senhaInput.style.borderColor = '#27ae60';
-	            }
-	        }
-	    });
+	       const senhaInput = document.getElementById('senha');
+    senhaInput.addEventListener('input', function(e) {
+        const senha = e.target.value;
+        const hasUpperCase = /[A-Z]/.test(senha);
+        const hasLowerCase = /[a-z]/.test(senha);
+        const hasNumbers = /\d/.test(senha);
+        const hasSpecialChar = /[@$!%*?&]/.test(senha);
+        
+        if (senha.length > 0) {
+            if (!hasUpperCase || !hasLowerCase || !hasNumbers || !hasSpecialChar) {
+                senhaInput.style.borderColor = '#e74c3c';
+            } else {
+                senhaInput.style.borderColor = '#27ae60';
+            }
+        }
+    });
 	});
 	</script>
 	        
