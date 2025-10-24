@@ -65,14 +65,14 @@
                 <input type="email" id="email" name="email" 
                        value="{{ old('email') }}" required 
                        placeholder="seu@email.com">
+                       
+                <label for="usuario">Nome de Usuário *</label>
+                <input type="text" id="usuario" name="usuario" minlength="3" maxlength="20"
+                       value="{{ old('usuario') }}" required placeholder="Escolha um nome de usuário">
 
                 <label for="senha">Senha *</label>
-                <input type="password" id="senha" name="senha" 
-                       minlength="8" required 
-                       placeholder="Mínimo 8 caracteres com letras, números e símbolos"
-                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]">
+                <input type="password" id="senha" name="senha" minlength="7" required>
                 <small class="form-text">
-                    A senha deve conter: letra maiúscula, minúscula, número e caractere especial (@$!%*?&)
                 </small>
 
                 <label for="foto">Foto (opcional)</label>

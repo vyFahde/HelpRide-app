@@ -26,7 +26,6 @@ class AppServiceProvider extends ServiceProvider
             return in_array(strlen($numero), [10, 11]);
         });
 
-        // Mensagens personalizadas
         Validator::replacer('formato_cpf', function ($message, $attribute, $rule, $parameters) {
             return "O campo {$attribute} deve conter 11 dígitos.";
         });

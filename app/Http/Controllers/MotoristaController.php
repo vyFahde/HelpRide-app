@@ -1,4 +1,4 @@
-'''<?php
+<?php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Motorista;
 use App\Models\Passageiro;
+use Illuminate\Support\Facades\Validator;
 
 class MotoristaController extends Controller
 {
@@ -14,7 +15,7 @@ class MotoristaController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             
             // Dados Pessoais
             'nome' => 'required|string|min:3|max:100',
@@ -24,7 +25,12 @@ class MotoristaController extends Controller
             'celular' => 'required|string|min:10|max:15|unique:motoristas,celular|unique:passageiros,celular',
             'email' => 'required|email|unique:motoristas,email|unique:passageiros,email',
             'usuario' => 'required|string|min:3|max:20|unique:motoristas,usuario',
-            'senha' => 'required|string|min:7',
+            'senha' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/'
+            ],
             'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             
             // Dados da CNH
@@ -42,6 +48,7 @@ class MotoristaController extends Controller
             'ano.integer' => 'O ano do veículo deve ser um número.',
             'ano.min' => 'O ano do veículo deve ser a partir de 2000.',
             'ano.max' => 'O ano do veículo não pode ser no futuro.',
+            'senha.regex' => 'A senha deve conter letras maiúsculas, minúsculas, números e pelo menos um caractere especial.',
             'cpf.unique' => 'Este CPF já está cadastrado.',
             'celular.unique' => 'Este celular já está cadastrado.',
             'email.unique' => 'Este e-mail já está cadastrado.',
@@ -49,17 +56,23 @@ class MotoristaController extends Controller
             'cnh.unique' => 'Esta CNH já está cadastrada.',
         ]);
 
-        // Validação manual do CPF e Celular
-        $errors = [];
+        // Validação manual de CPF e Celular (se a validação automática falhar)
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
 
         $cpfLimpo = preg_replace('/[^0-9]/', '', $request->cpf);
+        $celularLimpo = preg_replace('/[^0-9]/', '', $request->celular);
+
+        // Validação adicional de tamanho de CPF e Celular (se necessário)
+        $errors = [];
         if (strlen($cpfLimpo) !== 11) {
             $errors['cpf'] = 'CPF deve conter 11 dígitos.';
         }
         
-        $celularLimpo = preg_replace('/[^0-9]/', '', $request->celular);
         $tamanhoCelular = strlen($celularLimpo);
-        
         if (!in_array($tamanhoCelular, [10, 11])) {
             $errors['celular'] = 'Número de celular deve ter 10 ou 11 dígitos (com DDD).';
         }
@@ -105,4 +118,4 @@ class MotoristaController extends Controller
         }
     }
 }
-'''
+

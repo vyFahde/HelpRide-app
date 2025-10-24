@@ -18,6 +18,7 @@ class Passageiro extends Authenticatable
         'genero',
         'celular',
         'email',
+        'usuario',
         'senha',
         'foto',
         'status',
@@ -26,6 +27,16 @@ class Passageiro extends Authenticatable
     protected $hidden = [
         'senha',
     ];
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->senha;
+    }
 
     protected $casts = [
         'nascimento' => 'date',

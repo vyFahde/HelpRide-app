@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('genero');
             $table->string('celular')->unique();
             $table->string('email')->unique();
+            $table->string('usuario')->unique();
             $table->string('senha');
             $table->string('foto')->nullable();
             $table->string('status');

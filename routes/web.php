@@ -7,6 +7,7 @@ use App\Http\Controllers\SobreController;
 use App\Http\Controllers\MotoristaController;
 use App\Http\Controllers\PassageiroController;
 use App\Http\Controllers\SuporteController;
+use Illuminate\Support\Facades\Auth;
 
 // Rotas públicas
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -40,7 +41,7 @@ Route::prefix('/passageiro')->group(function() {
     Route::post('/cadastrar', [PassageiroController::class, 'store'])->name('passageiro.store');
 });
 
-// Rotas protegidas (exemplo)
+// Rotas protegidas
 Route::middleware(['auth:motorista,passageiro'])->group(function () {
     Route::prefix('/passageiro')->group(function() {
         Route::get('/buscar_carona', [PassageiroController::class, 'buscar_c'])->name('passageiro.buscar');
@@ -48,4 +49,9 @@ Route::middleware(['auth:motorista,passageiro'])->group(function () {
     });
     
     // Adicionar rotas protegidas para motorista aqui, se houver
+
+    // Rota temporária para Configurações do Perfil (você pode criar o controller e a view depois)
+    Route::get('/perfil/configuracoes', function () {
+        return view('perfil_configuracoes'); // Assumindo que você criará esta view
+    })->name('perfil.configuracoes');
 });

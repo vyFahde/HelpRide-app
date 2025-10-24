@@ -63,7 +63,13 @@
                 <input type="text" id="usuario" name="usuario" minlength="3" maxlength="20" value="{{ old('usuario') }}" required>
 
                 <label for="senha">Senha *</label>
-                <input type="password" id="senha" name="senha" minlength="7" required>
+                <input type="password" id="senha" name="senha" 
+                       minlength="8" required 
+                       placeholder="Mínimo 8 caracteres com letras, números e símbolos"
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]">
+                <small class="form-text">
+                    A senha deve conter: letra maiúscula, minúscula, número e caractere especial (@$!%*?&)
+                </small>
 
                 <label for="foto">Foto</label>
                 <input type="file" id="foto" name="foto" accept="image/*">
@@ -98,9 +104,55 @@
                 <label for="cor">Cor *</label>
                 <input type="text" id="cor" name="cor" value="{{ old('cor') }}" required>
             </div>
-        </div>
-        
-        <div class="btn-global">
+</div>
+
+    <script>
+	// Máscaras para os campos
+	document.addEventListener('DOMContentLoaded', function() {
+	    // Máscara para CPF
+	    const cpfInput = document.getElementById('cpf');
+	    cpfInput.addEventListener('input', function(e) {
+	        let value = e.target.value.replace(/\D/g, '');
+	        if (value.length <= 11) {
+	            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+	            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+	            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+	        }
+	        e.target.value = value;
+	    });
+	
+	    // Máscara para Celular
+	    const celularInput = document.getElementById('celular');
+	    celularInput.addEventListener('input', function(e) {
+	        let value = e.target.value.replace(/\D/g, '');
+	        if (value.length <= 11) {
+	            value = value.replace(/(\d{2})(\d)/, '($1) $2');
+	            value = value.replace(/(\d{5})(\d)/, '$1-$2');
+	        }
+	        e.target.value = value;
+	    });
+
+	    // Validação de senha em tempo real
+	    const senhaInput = document.getElementById('senha');
+	    senhaInput.addEventListener('input', function(e) {
+	        const senha = e.target.value;
+	        const hasUpperCase = /[A-Z]/.test(senha);
+	        const hasLowerCase = /[a-z]/.test(senha);
+	        const hasNumbers = /\d/.test(senha);
+	        const hasSpecialChar = /[@$!%*?&]/.test(senha);
+	        
+	        if (senha.length > 0) {
+	            if (!hasUpperCase || !hasLowerCase || !hasNumbers || !hasSpecialChar) {
+	                senhaInput.style.borderColor = '#e74c3c';
+	            } else {
+	                senhaInput.style.borderColor = '#27ae60';
+	            }
+	        }
+	    });
+	});
+	</script>
+	        
+	        <div class="btn-global">
             <button type="submit">Cadastrar</button>
                 
             <div class="btn-voltar">

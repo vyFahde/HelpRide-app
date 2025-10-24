@@ -32,6 +32,16 @@ class Motorista extends Authenticatable
         'senha',
     ];
 
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->senha;
+    }
+
     protected $casts = [
         'nascimento' => 'date',
         'validade_cnh' => 'date',

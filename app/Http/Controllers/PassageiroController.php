@@ -34,6 +34,7 @@ class PassageiroController extends Controller
                 'genero' => 'required|in:masculino,feminino,outro',
                 'celular' => 'required|string|min:11|max:15|unique:passageiros,celular|unique:motoristas,celular',
                 'email' => 'required|email|unique:passageiros,email|unique:motoristas,email',
+                'usuario' => 'required|string|min:3|max:20|unique:passageiros,usuario',
                 'senha' => [
                     'required',
                     'string',
@@ -46,7 +47,8 @@ class PassageiroController extends Controller
                 'senha.regex' => 'A senha deve conter letras maiúsculas, minúsculas, números e pelo menos um caractere especial.',
                 'cpf.unique' => 'Este CPF já está cadastrado.',
                 'celular.unique' => 'Este celular já está cadastrado.',
-                'email.unique' => 'Este e-mail já está cadastrado.'
+                'email.unique' => 'Este e-mail já está cadastrado.',
+                'usuario.unique' => 'Este nome de usuário já está em uso.',
             ]);
 
             if ($validator->fails()) {
@@ -69,6 +71,7 @@ class PassageiroController extends Controller
                 'genero' => $request->genero,
                 'celular' => preg_replace('/[^0-9]/', '', $request->celular),
                 'email' => $request->email,
+                'usuario' => $request->usuario,
                 'senha' => Hash::make($request->senha),
                 'foto' => $fotoPath,
                 'status' => 'pendente'
