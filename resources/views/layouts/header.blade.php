@@ -12,14 +12,14 @@
                 <li><a href="{{route('sobre')}}">Sobre</a></li>
                 @if(Auth::guard('passageiro')->check() || Auth::guard('motorista')->check())                    
                 @endif
-                <li><a href="{{route('passageiro.buscar')}}">Caronas</a></li>
+                <li><a href="{{ Auth::guard('motorista')->check() ? route('carona.publicar') : route('passageiro.buscar') }}">Caronas</a></li>
                 <li><a href="{{route('suporte')}}">Suporte</a></li>
             </ul>
         </nav>
         
         <div class="btn-container">
             @if(Auth::guard('passageiro')->check() || Auth::guard('motorista')->check())
-                <div class="btn-global">
+                <div class="btn-motorista">
                     {{-- O link para as configurações deve ser criado em routes/web.php e no controller --}}
                     <a href="{{ route('perfil.configuracoes') }}"> 
                         <button>Configurações do Perfil</button>

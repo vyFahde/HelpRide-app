@@ -7,8 +7,9 @@ use App\Http\Controllers\SobreController;
 use App\Http\Controllers\MotoristaController;
 use App\Http\Controllers\PassageiroController;
 use App\Http\Controllers\SuporteController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CaronaController; // Adicionado
 use App\Http\Controllers\PerfilConfiguracoesController;
+use Illuminate\Support\Facades\Auth;
 
 // Rotas públicas
 Route::get('/', [HomeController::class, 'home'])->name('home');
@@ -51,6 +52,11 @@ Route::middleware(['auth:motorista,passageiro'])->group(function () {
     
     // Adicionar rotas protegidas para motorista aqui, se houver
 
-
     Route::get('/perfil/configuracoes', [PerfilConfiguracoesController::class, 'index'])->name('perfil.configuracoes');
+    
+    // Rotas de Carona
+    Route::controller(CaronaController::class)->group(function() {
+        Route::get('/carona/publicar', 'publicarCarona')->name('carona.publicar');
+        Route::post('/carona/store', 'store')->name('carona.store');
+    });
 });

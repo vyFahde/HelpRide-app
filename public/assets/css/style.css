@@ -1125,3 +1125,179 @@ section.sobre {
     font-size: 13px;
   }
 }
+
+/*Publicar carona*/
+.publicar-carona-page {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 50px 4%;
+}
+
+.publicar-carona-page .overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.publicar-carona-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    max-width: 100%;
+}
+
+.titulo-carona {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.help-ride-color {
+    color: rgb(70, 182, 182);
+    font-weight: bold;
+}
+
+.form-carona-wrapper {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-group-carona {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group-carona {
+    margin-bottom: 15px;
+}
+
+.input-group-carona label {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.dot-icon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: rgb(70, 182, 182);
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.passenger-icon::before {
+    content: "👤";
+    margin-right: 8px;
+}
+
+.swap-icon {
+    text-align: center;
+    margin: -10px 0;
+    font-size: 1.5em;
+    color: rgb(70, 182, 182);
+    cursor: pointer;
+}
+
+.input-group-carona input[type="text"],
+.input-group-carona input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.input-group-carona input:focus {
+    border-color: rgb(70, 182, 182);
+    box-shadow: 0 0 0 3px rgba(70, 182, 182, 0.1);
+    outline: none;
+}
+
+.price-group label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.price-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.price-input .currency {
+    padding: 10px;
+    background-color: #f5f5f5;
+    font-weight: bold;
+    color: rgb(70, 182, 182);
+}
+
+.price-input input {
+    border: none;
+    padding: 10px;
+    flex-grow: 1;
+}
+
+.btn-group-carona {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-publicar, .btn-voltar button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+/* Botão principal */
+.btn-publicar {
+    background-color: rgb(70, 182, 182);
+    color: white;
+}
+
+.btn-publicar:hover {
+    background-color: #1d9e9e;
+}
+
+/* Botão secundário */
+.btn-voltar button {
+    background-color: #ccc;
+    color: #333;
+}
+
+.btn-voltar button:hover {
+    background-color: #b3b3b3;
+}
