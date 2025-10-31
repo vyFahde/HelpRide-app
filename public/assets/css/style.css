@@ -453,7 +453,6 @@ section.sobre {
 /* Tela de busca de carona */
 .busca-carona {
   position: relative;
-  /* REMOVER: background: url("assets/images/sobre_bg.jpg") no-repeat center center/cover; */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

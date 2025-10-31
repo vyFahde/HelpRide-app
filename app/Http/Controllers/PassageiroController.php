@@ -37,7 +37,7 @@ $validator = Validator::make($request->all(), [
     'genero' => 'required|in:masculino,feminino,outro',
     'celular' => 'required|digits_between:10,11|unique:passageiros,celular',
     'email' => 'required|email|unique:passageiros,email',
-    'usuario' => 'required|string|min:3|max:20|unique:passageiros,usuario',
+    'usuario' => 'required|string|min:3|max:20|unique:passageiros,usuario|unique:motoristas,usuariogi',
     'senha' => [
         'required',
         'string',

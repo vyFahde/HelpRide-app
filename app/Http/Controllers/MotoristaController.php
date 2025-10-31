@@ -35,17 +35,17 @@ $validator = Validator::make($request->all(), [
     ],
     'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
     'cnh' => 'required|string|size:11|unique:motoristas,cnh',
-    'validade' => 'required|date|after:today',
-    'modelo' => 'required|string|min:2|max:50',
-    'placa' => 'required|string|size:7',
-    'ano' => 'required|integer|min:2000|max:' . date('Y'),
-    'cor' => 'required|string|min:3|max:20',
+    'validade_cnh' => 'required|date|after:today',
+    'modelo_veiculo' => 'required|string|min:2|max:50',
+    'placa_veiculo' => 'required|string|size:7',
+    'ano_veiculo' => 'required|integer|min:2000|max:' . date('Y'),
+    'cor_veiculo' => 'required|string|min:3|max:20',
 ], [
     'cpf.digits' => 'O CPF deve conter exatamente 11 dígitos.',
     'celular.digits_between' => 'O celular deve conter 10 ou 11 dígitos.',
     'senha.regex' => 'A senha deve conter letras maiúsculas, minúsculas, números e pelo menos um caractere especial.',
     'cnh.size' => 'A CNH deve conter exatamente 11 caracteres.',
-    'validade.after' => 'A validade da CNH deve ser uma data futura.',
+    'validade_cnh.after' => 'A validade da CNH deve ser uma data futura.',
 ]);
 
 if ($validator->fails()) {

@@ -28,8 +28,6 @@
     </ul>
 </div>
 @endif
-
-<!-- FORM COMEÇA AQUI -->
 <form action="{{ route('motorista.store') }}" method="post" enctype="multipart/form-data">
 @csrf
 
@@ -79,7 +77,7 @@
         <input type="text" id="cnh" name="cnh" pattern="\d{11}" maxlength="11" placeholder="Somente números" value="{{ old('cnh') }}" required>
 
         <label for="validade">Data de Validade *</label>
-        <input type="date" id="validade" name="validade" value="{{ old('validade') }}" required>
+        <input type="date" id="validade_cnh" name="validade_cnh" value="{{ old('validade_cnh') }}" required>
     </div>
 </div>
 
@@ -87,18 +85,18 @@
     <h2>Dados do Veículo</h2>
     <div class="form-group">
         <label for="modelo">Modelo *</label>
-        <input type="text" id="modelo" name="modelo" value="{{ old('modelo') }}" required>
+        <input type="text" id="modelo_veiculo" name="modelo_veiculo" value="{{ old('modelo') }}" required>
 
         <label for="placa">Placa *</label>
-        <input type="text" id="placa" name="placa" 
+        <input type="text" id="placa_veiculo" name="placa_veiculo" 
                 pattern="([A-Z]{3}[0-9][A-Z0-9][0-9]{2})|([A-Z]{3}[0-9]{4})" 
                 placeholder="XXX0X00 ou XXX0000" value="{{ old('placa') }}" required>
 
         <label for="ano">Ano *</label>
-        <input type="number" id="ano" name="ano" min="1980" max="{{ date('Y') }}" value="{{ old('ano') }}" placeholder="Ex: 2020" required>
+        <input type="number" id="ano_veiculo" name="ano_veiculo" min="1980" max="{{ date('Y') }}" value="{{ old('ano') }}" placeholder="Ex: 2020" required>
 
         <label for="cor">Cor *</label>
-        <input type="text" id="cor" name="cor" value="{{ old('cor') }}" required>
+        <input type="text" id="cor_veiculo" name="cor_veiculo" value="{{ old('cor') }}" required>
     </div>
 </div>
 
