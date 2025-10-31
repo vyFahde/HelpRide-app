@@ -57,8 +57,8 @@
 
     <div class="btn-group-carona">
         <button type="submit" class="btn-publicar">Publicar</button>
-        <a href="{{ route('home') }}" class="btn-voltar">
-            <button type="button">Voltar</button>
+        <a href="{{ route('home') }}" class="btn-voltar-c">
+            <button type="button" class="btn-voltar-c">Voltar</button>
         </a>
     </div>
 </form>

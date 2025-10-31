@@ -1271,7 +1271,7 @@ section.sobre {
     margin-top: 20px;
 }
 
-.btn-publicar, .btn-voltar button {
+.btn-publicar, .btn-voltar-c button {
     padding: 12px;
     border: none;
     border-radius: 8px;
@@ -1290,11 +1290,11 @@ section.sobre {
     background-color: #1d9e9e;
 }
 
-.btn-voltar button {
+.btn-voltar-c button {
     background-color: #ccc;
     color: #333;
 }
 
-.btn-voltar button:hover {
+.btn-voltar-c button:hover {
     background-color: #b3b3b3;
 }

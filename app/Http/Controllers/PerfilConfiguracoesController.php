@@ -14,7 +14,6 @@ class PerfilConfiguracoesController extends Controller
      */
     public function index()
     {
-        // Determina qual guard está autenticado (motorista ou passageiro)
         $user = null;
         if (Auth::guard('motorista')->check()) {
             $user = Auth::guard('motorista')->user();
