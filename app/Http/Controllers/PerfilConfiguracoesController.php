@@ -22,13 +22,6 @@ class PerfilConfiguracoesController extends Controller
             $user = Auth::guard('passageiro')->user();
             $tipo_usuario = 'passageiro';
         }
-
-        if (!$user) {
-            // Se por algum motivo o middleware falhar, redireciona para o login
-            return redirect()->route('login');
-        }
-
         return view('perfil_configuracoes', compact('user', 'tipo_usuario'));
     }
 }
-

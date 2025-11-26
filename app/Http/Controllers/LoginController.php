@@ -20,15 +20,13 @@ class LoginController extends Controller
             'usuario' => 'required|string',
             'senha' => 'required|string',
         ]);
-
-        // Tenta autenticar como Motorista
-        if (Auth::guard('motorista')->attempt(['usuario' => $credentials['usuario'], 'password' => $credentials['senha']])) {
+        
+        if (Auth::guard('motorista')->attempt(['usuario' => $credentials['usuario'], 'senha' => $credentials['senha']])) {
             $request->session()->regenerate();
             return redirect()->intended(route('home'));
         }
 
-        // Tenta autenticar como Passageiro (agora com campo 'usuario')
-        if (Auth::guard('passageiro')->attempt(['usuario' => $credentials['usuario'], 'password' => $credentials['senha']])) {
+        if (Auth::guard('passageiro')->attempt(['usuario' => $credentials['usuario'], 'senha' => $credentials['senha']])) {
             $request->session()->regenerate();
             return redirect()->intended(route('home'));
         }
