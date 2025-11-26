@@ -58,4 +58,6 @@ Route::middleware(['auth:motorista'])->group(function () {
         Route::get('/carona/publicar', 'publicarCarona')->name('carona.publicar');
         Route::post('/carona/store', 'store')->name('carona.store');
     });
+
+    Route::get('/perfil/configuracoes', [PerfilConfiguracoesController::class, 'index'])->name('perfil.configuracoes');
 });
