@@ -21,14 +21,14 @@ class LoginController extends Controller
             'senha' => 'required|string',
         ]);
         
-        if (Auth::guard('motorista')->attempt(['usuario' => $credentials['usuario'], 'senha' => $credentials['senha']])) {
+        if (Auth::guard('motorista')->attempt(['usuario' => $credentials['usuario'], 'password' => $credentials['senha']])) {
             $request->session()->regenerate();
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('carona.publicar'));
         }
 
-        if (Auth::guard('passageiro')->attempt(['usuario' => $credentials['usuario'], 'senha' => $credentials['senha']])) {
+        if (Auth::guard('passageiro')->attempt(['usuario' => $credentials['usuario'], 'password' => $credentials['senha']])) {
             $request->session()->regenerate();
-            return redirect()->intended(route('home'));
+            return redirect()->intended(route('passageiro.painel'));
         }
 
         return back()->withErrors([
